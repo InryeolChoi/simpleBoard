@@ -9,9 +9,13 @@
 *.zip
 *.tar.gz
 *.rar
+*.env
 
 hs_err_pid*
 replay_pid*
+
+### DB ###
+/db/db_data
 
 ### macOS ###
 .DS_Store

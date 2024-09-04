@@ -1,0 +1,48 @@
+CREATE TABLE Role (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE User (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE User_Role (
+    user_id BIGINT,
+    role_id BIGINT,
+    PRIMARY KEY (user_id, role_id),
+    FOREIGN KEY (user_id) REFERENCES User(id),
+    FOREIGN KEY (role_id) REFERENCES Role(id)
+);
+
+CREATE TABLE Post (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    author_id BIGINT,
+    FOREIGN KEY (author_id) REFERENCES User(id)
+);
+
+CREATE TABLE Comment (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    post_id BIGINT,
+    author_id BIGINT,
+    FOREIGN KEY (post_id) REFERENCES Post(id),
+    FOREIGN KEY (author_id) REFERENCES User(id)
+);
+
+CREATE TABLE Like (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    post_id BIGINT,
+    user_id BIGINT,
+    FOREIGN KEY (post_id) REFERENCES Post(id),
+    FOREIGN KEY (user_id) REFERENCES User(id)
+);
