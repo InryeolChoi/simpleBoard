@@ -16,6 +16,8 @@ ps:
 clean: down
 	docker system prune -f
 	docker rmi -f $$(docker images -q) || true
+
+fclean: clean
 	docker volume rm $$(docker volume ls -q) || true
 	docker network rm $$(docker network ls -q) || true
 
