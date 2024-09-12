@@ -1,6 +1,5 @@
 package com.board.backend.controller;
 
-
 import com.board.backend.dto.UserDto;
 import com.board.backend.service.UserService;
 import lombok.RequiredArgsConstructor;
