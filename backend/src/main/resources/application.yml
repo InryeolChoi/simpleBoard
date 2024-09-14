@@ -1,2 +1,12 @@
-springdoc.api-docs.title=My API
-springdoc.api-docs.description=API documentation for My API
+spring:
+  datasource:
+    url: jdbc:mariadb://mariadb:3306/${MYSQL_DATABASE}  # MariaDB 컨테이너와 연결 (docker-compose.yml에서 설정한 컨테이너 이름 사용)
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update  # 필요에 따라 'create', 'none' 등으로 변경
+    show-sql: true  # SQL 쿼리를 출력 (선택 사항)
+    database-platform: org.hibernate.dialect.MariaDBDialect  # MariaDB에 맞는 방언 설정
+  # 추가적인 설정 (캐시, 트랜잭션 관리 등)

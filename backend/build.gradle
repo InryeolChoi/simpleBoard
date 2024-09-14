@@ -24,27 +24,33 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springdoc:springdoc-openapi-ui:2.6.0'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.mysql:mysql-connector-j'
-	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+
+	// lombok 관련 설정
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// junit 관련
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-	// JWT
+	// DB 관련 설정
+	implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.2'  // 최신 MariaDB JDBC 드라이버 버전
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	// JWT 관련
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.5' // API 모듈
 	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5' // 구현 모듈
 	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5' // JSON 처리 모듈 (Jackson 사용)
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.3'
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.3'
 
-	// Servlet API
+	// Servlet API 관련
 	implementation 'jakarta.servlet:jakarta.servlet-api:5.0.0'
 }
 
